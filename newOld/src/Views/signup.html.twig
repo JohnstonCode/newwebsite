@@ -1,0 +1,23 @@
+{% extends "partials/base.html.twig" %}
+{% block title %}SignUp{% endblock %}
+
+{% block content %}
+    
+    {% if completed %}
+<div class="account">
+        <h1>Thanks for signing up</h1>
+            <a href="/login">Click here to login</a>
+</div>
+    {% else %}
+
+        {{ form_start(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.plainPassword.first) }}
+    {{ form_row(form.plainPassword.second) }}
+
+    <button type="submit">Register!</button>
+{{ form_end(form) }}
+    {% endif %}
+
+{% endblock %}

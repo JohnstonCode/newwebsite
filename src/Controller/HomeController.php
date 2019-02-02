@@ -1,17 +1,17 @@
 <?php
-namespace Jubby\Controller;
 
-class HomeController
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+
+class HomeController extends AbstractController
 {
-    private $view;
-
-    public function __construct(\Slim\Views\Twig $view)
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function index()
     {
-        $this->view = $view;
-    }
-
-    public function get($request, $response, $args)
-    {
-        return $this->view->render($response, 'home.html.twig');
+        return $this->render('home.html.twig');
     }
 }

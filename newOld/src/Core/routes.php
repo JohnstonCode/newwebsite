@@ -23,7 +23,7 @@ $app->get('/login', 'LoginController:get');
 $app->post('/login', 'LoginController:post');
 
 
-$app->get('/signup', 'SignupController:get'); 
+$app->get('/signup', 'SignupController:new'); 
 $app->post('/signup', 'SignupController:post'); 
 
 $app->get('/account', 'AccountController:get'); 

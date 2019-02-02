@@ -1,7 +1,9 @@
 <?php
 namespace Jubby\Controller;
 
-use Jubby\Model\User;
+use Symfony\Component\Form\Forms;
+use Jubby\Form\SignupFormType;
+use Jubby\Entity\User;
 
 class SignupController
 {
@@ -12,10 +14,16 @@ class SignupController
         $this->view = $view;
     }
 
-    public function get($request, $response, $args)
+    public function new($request, $response, $args)
     {
+        $formFactory = Forms::createFormFactory();
+        $user = new User();
+        $form = $formFactory->create(SignupFormType::class, $user);
 
-        return $this->view->render($response, 'signup.html.twig');
+
+        return $this->view->render($response, 'signup.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
     public function post($request, $response, $args)
